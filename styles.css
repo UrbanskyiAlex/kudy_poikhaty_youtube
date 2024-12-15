@@ -1,0 +1,416 @@
+@font-face {
+  font-family: "Montserrat";
+  src: url("./assets/fonts/Montserrat-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+:root {
+  --dark_bg: #141318;
+  --light_dark_bg: #1e1e20;
+  --light_text: #fff;
+  --hover_color: #757575;
+  --youtube_btn: #ac2424;
+  --youtube_hover: #f40b0b;
+}
+/* ---- Reset CSS ---- */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 100%;
+  line-height: 1.6;
+  -webkit-text-size-adjust: 100%;
+  -moz-tab-size: 4;
+  tab-size: 4;
+}
+
+body {
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  background-color: var(--dark_bg);
+  color: var(--light_text);
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* ---- HEADER ---- */
+header {
+  position: fixed; /* Фіксуємо header */
+  top: 0;
+  left: 0;
+  width: 100%; /* Займає всю ширину */
+  z-index: 1000; /* Встановлюємо високий шар для перекриття інших елементів */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+  padding: 10px 20px;
+  background-color: var(--dark_bg);
+  color: white;
+}
+
+.logo h1 {
+  font-size: 24px;
+  margin: 0;
+}
+
+nav .nav-links {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin: 0;
+  padding: 0;
+}
+
+nav .nav-links li a {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+nav .nav-links li a:hover {
+  color: var(--hover_color);
+}
+/* ---- ABOUT ---- */
+
+#about {
+  height: 60vh; /* Займає 50% висоти екрану */
+  background: url("./assets/images/about_bg.jpg") center/cover no-repeat; /* Фонова картинка */
+  display: flex; /* Центруємо контент */
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 100px;
+  color: white; /* Білий текст */
+  position: relative;
+}
+
+/* Напівпрозорий шар */
+#about::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Напівпрозорий шар для контрасту */
+  z-index: 1;
+}
+
+/* Контент поверх */
+.about-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column; /* Вирівнюємо елементи вертикально */
+  align-items: center;
+  gap: 15px; /* Відстань між елементами */
+}
+
+.youtube-icon {
+  width: 80px;
+  height: 80px;
+}
+
+.about-title {
+  font-size: 50px;
+  margin: 0;
+}
+
+.about-description {
+  font-size: 18px;
+  margin: 0;
+}
+
+/* Анімація для кожного елемента */
+.about-content img,
+.about-content h2,
+.about-content p,
+.about-content a {
+  opacity: 0; /* Спочатку елементи невидимі */
+  transform: translateY(40px); /* Початковий зсув */
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.about-content img.visible,
+.about-content h2.visible,
+.about-content p.visible,
+.about-content a.visible {
+  opacity: 1; /* Елементи стають видимими */
+  transform: translateY(0); /* Переміщаємо до нормальної позиції */
+}
+
+.youtube-btn {
+  display: inline-block;
+  margin-top: 70px;
+  padding: 10px 20px;
+  background-color: var(--youtube_btn); /* Червоний колір YouTube */
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 1s ease;
+}
+
+.youtube-btn:hover {
+  background-color: var(--youtube_hover);
+}
+
+/* ---- Секція Info ---- */
+#info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.info-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--light_dark_bg);
+  padding: 40px;
+  border-radius: 10px;
+}
+
+.info-img {
+  width: 30%; /* Картинки займають 30% ширини */
+  height: auto; /* Висота автоматична */
+  object-fit: cover; /* Щоб зображення добре масштабувалося */
+  border-radius: 8px; /* Краї картинок заокруглені */
+}
+
+.info-text {
+  text-align: center;
+}
+
+.info-text h2 {
+  font-size: 30px;
+  margin-bottom: 20px;
+  color: var(--light_text);
+}
+
+.info-text ul {
+  list-style: none; /* Без маркерів */
+  padding: 0;
+}
+
+.info-text li {
+  font-size: 26px;
+  margin: 10px 0;
+  color: var(--light_text);
+}
+/* --animation */
+.animate-right,
+.animate-left {
+  opacity: 0;
+  transform: translateX(100px); /* Зміщення вправо */
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.animate-left {
+  transform: translateX(-100px); /* Зміщення вліво */
+}
+
+/* Активний стан */
+.animate-right.active,
+.animate-left.active {
+  opacity: 1;
+  transform: translateX(0); /* Повернення до нормального положення */
+}
+
+/* Секція Report */
+#report {
+  padding: 50px 20px;
+  background-color: var(--dark_bg);
+}
+
+.report-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px; /* Відступи між картками */
+}
+
+/* Анімація при наведенні */
+/* .report-card:hover {
+  transform: scale(1.05);
+} */
+
+.report-content {
+  background-color: rgba(0, 0, 0, 0.6); /* Напівпрозорий фон */
+  color: #fff;
+  height: 100%;
+  width: 100%;
+}
+
+.report-date {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.report-title {
+  font-size: 38px;
+  padding: 20px;
+  text-align: center;
+}
+
+.report-row {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+/* Зображення в картці */
+.report-img {
+  width: 350px;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+/* Посилання */
+.report-link {
+  font-size: 14px;
+  color: #fff;
+  text-decoration: none;
+  background-color: #007bff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.report-link:hover {
+  background-color: #0056b3;
+}
+
+/* Секція Report */
+#report {
+  padding: 0; /* Видаляємо зайві відступи */
+}
+
+.report-container {
+  display: flex;
+  flex-direction: column; /* Картки одна під одною */
+}
+
+/* Картка */
+.report-card {
+  background-color: var(--dark_bg);
+}
+
+/* Контент картки */
+.report-content {
+  padding: 10px;
+}
+.content-date {
+  font-size: 14px;
+}
+.content-title {
+  font-size: 16px;
+  font-weight: 700;
+}
+.conten-links {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  /* height: 250px; */
+}
+.content-img {
+  width: 20%;
+  height: auto; /* Висота автоматична */
+  object-fit: cover; /* Щоб зображення добре масштабувалося */
+  border-radius: 8px;
+}
+.content-link {
+}
+.content-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border: 2px solid var(--hover_color);
+  border-radius: 5px;
+  padding: 5px;
+  height: 45px;
+  margin-bottom: 5px;
+  transition: background-color 0.5s ease;
+}
+.content-link:hover {
+  background-color: var(--hover_color);
+}
+
+/* Адаптивність */
+@media (max-width: 1120px) {
+  .info-text h2 {
+    font-size: 20px;
+  }
+  .info-text li {
+    font-size: 16px;
+  }
+}
+@media (max-width: 768px) {
+  .logo h1 {
+    font-size: 16px;
+  }
+  nav .nav-links li a {
+    font-size: 12px;
+  }
+  .about-title {
+    font-size: 40px;
+  }
+  .info-container {
+    flex-direction: column; /* Переводимо елементи в колонку на вузьких екранах */
+  }
+  .info-img {
+    width: 80%;
+  }
+
+  .info-text h2 {
+    margin: 15px 0;
+  }
+  .report-title {
+    font-size: 25px;
+    padding: 10px;
+  }
+  .content-img {
+    width: 45%;
+  }
+}
+@media (max-width: 768px) {
+  .content-link-name {
+    font-size: 14px;
+  }
+  .link-icon {
+    width: 25px;
+  }
+}
